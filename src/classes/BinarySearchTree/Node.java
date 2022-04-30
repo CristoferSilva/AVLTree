@@ -49,6 +49,16 @@ public class Node <Key extends Comparable <Key>, Value> implements INode<Key, Va
 	}
 	@Override
 	public int getSize() {
+		int leftSize = 0;
+		int rightSize = 0;
+		if(left == null && right != null) {
+			leftSize = 0;
+			rightSize = right.getSize();
+		} else if(right == null && left != null) {
+			leftSize = left.getSize();
+			rightSize = 0;
+		}
+		this.size = leftSize + rightSize + 1;
 		return this.size;
 	}
 	@Override
