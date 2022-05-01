@@ -1,4 +1,4 @@
-package tests.BinarySearchTreeTest.AVLTreeTest;
+package tests.AVLTreeTest;
 
 import static org.junit.Assert.assertTrue;
 
