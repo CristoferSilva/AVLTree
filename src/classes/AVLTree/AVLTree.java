@@ -214,7 +214,7 @@ public class AVLTree<Key extends Comparable<Key>, Value> implements IAVlTree<Key
 			if (xBalanceFactor < -1 || xBalanceFactor > 1) {
 				return this.getUnbalancedNode(x.getRight(), key, x);
 			} else if (lastUnbalancedNODE != null) {
-				return this.getUnbalancedNode(x.getLeft(), key, lastUnbalancedNODE);
+				return this.getUnbalancedNode(x.getRight(), key, lastUnbalancedNODE);
 			}
 			return this.getUnbalancedNode(x.getRight(), key, null);
 		}
@@ -253,7 +253,19 @@ public class AVLTree<Key extends Comparable<Key>, Value> implements IAVlTree<Key
 	}
 
 	private void rightRightRotation(AVLNode<Key, Value> unbalancedNode) {
+		AVLNode<Key, Value> rightSon = unbalancedNode.getRight();
+		AVLNode<Key, Value> unbalancedNodeFather = getFather(unbalancedNode.getKey());
+		AVLNode<Key, Value> rightSonLeftSubTree = rightSon.getLeft();
 
+		unbalancedNode.setRight(rightSonLeftSubTree);
+		rightSon.setLeft(unbalancedNode);
+
+		if (unbalancedNodeFather != null) {
+			unbalancedNodeFather.setRight(rightSon);
+		}
+		if (unbalancedNode.getKey().compareTo(this.getRoot().getKey()) == 0) {
+			this.root = rightSon;
+		}
 	}
 
 	private void leftLeftRotation(AVLNode<Key, Value> unbalancedNode) {
