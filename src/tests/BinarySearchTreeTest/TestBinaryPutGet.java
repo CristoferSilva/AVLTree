@@ -3,6 +3,10 @@ package tests.BinarySearchTreeTest;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * The BinarySearchTree tests were implemented by Professor Diego Pinheiro in the ED1 Subject
+ */
+
 import classes.BinarySearchTree.BinarySearchTree;
 
 public class TestBinaryPutGet {

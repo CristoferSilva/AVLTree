@@ -5,9 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import classes.AVLTree.AVLNode;
-import classes.AVLTree.AVLTree;
 import interfaces.IAVLNode;
-import interfaces.IAVlTree;
+
 
 public class AVLNodeBalanceFactorTest {
     @Test

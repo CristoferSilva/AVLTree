@@ -8,6 +8,10 @@ import org.junit.Test;
 import classes.BinarySearchTree.BinarySearchTree;
 import classes.BinarySearchTree.BinaryTreeWalker;
 
+/**
+ * The BinarySearchTree tests were implemented by Professor Diego Pinheiro in the ED1 Subject
+ */
+
 public class TestBinarySearchTreeDelete {
 	
 	@Test

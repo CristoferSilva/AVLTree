@@ -5,6 +5,10 @@ import org.junit.Test;
 
 import classes.BinarySearchTree.BinarySearchTree;
 
+/**
+ * The BinarySearchTree tests were implemented by Professor Diego Pinheiro in the ED1 Subject
+ */
+
 public class TestBinaryTreeSize {
 
 	@Test
