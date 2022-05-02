@@ -6,8 +6,8 @@ import interfaces.INode;
 public class AVLNode<Key extends Comparable <Key>, Value> implements IAVLNode<Key, Value> {
 
 	private Key key;
+	private int size;
 	private Value value;
-	private int balanceFactor, size;
 	private AVLNode <Key, Value> left, right;
 
 	
@@ -38,7 +38,7 @@ public class AVLNode<Key extends Comparable <Key>, Value> implements IAVLNode<Ke
 	}
 	@Override
 	public void setLeft(INode<Key, Value> left) {
-		this.left = (AVLNode)left;
+		this.left = (AVLNode<Key, Value>)left;
 	}
 	@Override
 	public AVLNode<Key, Value> getRight() {
@@ -46,7 +46,7 @@ public class AVLNode<Key extends Comparable <Key>, Value> implements IAVLNode<Ke
 	}
 	@Override
 	public void setRight(INode<Key, Value> right) {
-		this.right = (AVLNode)right;
+		this.right = (AVLNode<Key, Value>)right;
 	}
 	@Override
 	public int getSize() {
@@ -69,8 +69,8 @@ public class AVLNode<Key extends Comparable <Key>, Value> implements IAVLNode<Ke
 
 	@Override
 	public int getBalanceFactor() {
-		int nodeRightHeight = 0;
-		int nodeLeftHeight = 0;
+		int nodeRightHeight = 0, nodeLeftHeight = 0;
+	
 		if (left == null && right == null) {
 			return 0;
 		}
@@ -81,12 +81,8 @@ public class AVLNode<Key extends Comparable <Key>, Value> implements IAVLNode<Ke
 			nodeLeftHeight = left.getSize();
 			nodeRightHeight = 0;
 		}
-		this.balanceFactor = nodeRightHeight - nodeLeftHeight;
-		return this.balanceFactor;
+		
+		return nodeRightHeight - nodeLeftHeight;
 	}
-	public AVLNode<Key, Value> getFather() {
-		return null;
-	}
-
 }
 

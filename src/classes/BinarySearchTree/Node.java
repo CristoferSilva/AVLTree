@@ -5,10 +5,11 @@ import interfaces.INode;
 public class Node <Key extends Comparable <Key>, Value> implements INode<Key, Value>{
 	
 	private Key key;
+	private int size;
 	private Value value;
 	private Node <Key, Value> left;
 	private Node <Key, Value> right;
-	private int size;
+	
 	
 	public Node(Key key, Value value, int size) {
 		this.key = key;
@@ -37,7 +38,7 @@ public class Node <Key extends Comparable <Key>, Value> implements INode<Key, Va
 	}
 	@Override
 	public void setLeft(INode<Key, Value> left) {
-		this.left = (Node)left;
+		this.left = (Node<Key, Value>)left;
 	}
 	@Override
 	public Node<Key, Value> getRight() {
@@ -45,7 +46,7 @@ public class Node <Key extends Comparable <Key>, Value> implements INode<Key, Va
 	}
 	@Override
 	public void setRight(INode<Key, Value> right) {
-		this.right = (Node)right;
+		this.right = (Node<Key, Value>)right;
 	}
 	@Override
 	public int getSize() {
