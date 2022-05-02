@@ -48,7 +48,9 @@ public class AVLTree<Key extends Comparable<Key>, Value> implements IAVlTree<Key
 
 	@Override
 	public void delete(Key key) {
+		AVLNode<Key, Value> father =  getFather(key);
 		this.delete(this.root, key);
+		ensureBalance(father.getKey());
 	}
 
 	private AVLNode<Key, Value> delete(AVLNode<Key, Value> x, Key key) {
@@ -65,10 +67,8 @@ public class AVLTree<Key extends Comparable<Key>, Value> implements IAVlTree<Key
 		int maxCompareResult = key.compareTo(max());
 
 		if (minCompareResult == 0) {
-			ensureBalance(min()); // -1 indica esquerda
 			deleteMin(x);
 		} else if (maxCompareResult == 0) {
-			ensureBalance(max()); // +1 indica direita
 			deleteMax(x);
 		} else {
 			int compareResult = key.compareTo(x.getKey());
@@ -84,7 +84,6 @@ public class AVLTree<Key extends Comparable<Key>, Value> implements IAVlTree<Key
 				minNode.setLeft(x.getLeft());
 				x.getRight().setLeft(minNode.getRight());
 				minNode.setRight(x.getRight());
-				ensureBalance(minNode.getKey());
 				return minNode;
 
 			}
