@@ -226,10 +226,10 @@ public class AVLTree<Key extends Comparable<Key>, Value> implements IAVlTree<Key
 	}
 
 	public AVLNode<Key, Value> getFather(Key key) {
-		return this.getfather(this.root, key);
+		return this.getFather(this.root, key);
 	}
 
-	private AVLNode<Key, Value> getfather(AVLNode<Key, Value> x, Key key) {
+	private AVLNode<Key, Value> getFather(AVLNode<Key, Value> x, Key key) {
 		if (x == null) {
 			return null;
 		}
@@ -239,12 +239,12 @@ public class AVLTree<Key extends Comparable<Key>, Value> implements IAVlTree<Key
 			if (x.getLeft().getKey().equals(key)) {
 				return x;
 			}
-			return this.get(x.getLeft(), key);
+			return this.getFather(x.getLeft(), key);
 		} else if (compareResult > 0) {
 			if (x.getRight().getKey().equals(key)) {
 				return x;
 			}
-			return this.get(x.getRight(), key);
+			return this.getFather(x.getRight(), key);
 		}
 
 		return null;
