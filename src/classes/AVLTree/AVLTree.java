@@ -284,10 +284,22 @@ public class AVLTree<Key extends Comparable<Key>, Value> implements IAVlTree<Key
 	}
 
 	private void rightLeftRotation(AVLNode<Key, Value> unbalancedNode) {
+		AVLNode<Key, Value> fathersRightSon = unbalancedNode.getRight();
+		AVLNode<Key, Value> leftSon = fathersRightSon.getLeft();
 
+		unbalancedNode.setRight(leftSon);
+		leftSon.setRight(fathersRightSon);
+
+		rightRightRotation(unbalancedNode);
 	}
 
 	private void leftRightRotation(AVLNode<Key, Value> unbalancedNode) {
+		AVLNode<Key, Value> fathersLeftSon = unbalancedNode.getLeft();
+		AVLNode<Key, Value> rightSon = fathersLeftSon.getRight();
 
+		unbalancedNode.setLeft(rightSon);
+		rightSon.setLeft(fathersLeftSon);
+
+		leftLeftRotation(unbalancedNode);
 	}
 }
