@@ -11,17 +11,17 @@ import interfaces.IAVlTree;
 public class RightRightRotationTest {
 
     @Test
-    public void rootRotationTest(){
-        IAVlTree tree = new AVLTree();
+    public void rootPutRotationTest(){
+        IAVlTree<Integer, String> tree = new AVLTree<Integer, String>();
         
         tree.put(1, "a");
         tree.put(2, "b");
         tree.put(3, "c");
 
-        IAVLNode middleNode = tree.get(2);
+        IAVLNode<Integer, String> middleNode = tree.get(2);
         assertTrue(middleNode != null);
-        IAVLNode rightChildren = (AVLNode) middleNode.getRight();
-        IAVLNode leftChildren = (AVLNode) middleNode.getLeft();
+        IAVLNode<Integer, String> rightChildren = (AVLNode<Integer, String>) middleNode.getRight();
+        IAVLNode<Integer, String> leftChildren = (AVLNode<Integer, String>) middleNode.getLeft();
 
         assertTrue(leftChildren != null);
         assertTrue((int)leftChildren.getKey() == 1);
@@ -32,8 +32,8 @@ public class RightRightRotationTest {
     }
 
     @Test
-    public void middleRotationTest(){
-        IAVlTree tree = new AVLTree();
+    public void middlePutRotationTest(){
+        IAVlTree<Integer, String> tree = new AVLTree();
         
         tree.put(50, "a");
         tree.put(10, "b");
@@ -45,15 +45,38 @@ public class RightRightRotationTest {
         tree.put(80, "h");
         tree.put(90, "i");
 
-        IAVLNode middleNode = tree.get(70);
+        IAVLNode<Integer, String> middleNode = tree.get(70);
         assertTrue(middleNode != null);
-        IAVLNode rightChildren = (AVLNode) middleNode.getRight();
-        IAVLNode leftChildren = (AVLNode) middleNode.getLeft();
+        IAVLNode<Integer, String> rightChildren = (AVLNode<Integer, String>) middleNode.getRight();
+        IAVLNode<Integer, String> leftChildren = (AVLNode<Integer, String>) middleNode.getLeft();
 
         assertTrue(leftChildren != null);
         assertTrue((int)leftChildren.getKey() == 60);
         assertTrue(rightChildren != null );
         assertTrue((int)rightChildren.getKey() == 80);
+    }
+
+    @Test
+    public void deleteRotationTest(){
+        IAVlTree<Integer, String> tree = new AVLTree<Integer, String>();
+        
+        tree.put(2, "a");
+        tree.put(1, "b");
+        tree.put(3, "c");
+        tree.put(4, "d");
+        tree.delete(1);
+
+        IAVLNode<Integer, String> middleNode = tree.get(3);
+        assertTrue(middleNode != null);
+        IAVLNode<Integer, String> rightChildren = (AVLNode<Integer, String>) middleNode.getRight();
+        IAVLNode<Integer, String> leftChildren = (AVLNode<Integer, String>) middleNode.getLeft();
+
+        assertTrue(leftChildren != null);
+        assertTrue((int)leftChildren.getKey() == 2);
+        assertTrue(rightChildren != null );
+        assertTrue((int)rightChildren.getKey() == 4);
+
+        assertTrue((int)tree.getRoot().getKey() == 3);
     }
 
 }
